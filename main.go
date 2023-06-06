@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"prakerja/eventmanagement/configs"
 	"prakerja/eventmanagement/routes"
 )
@@ -11,6 +12,7 @@ func init() {
 }
 
 func main() {
+	port := os.Getenv("WEB_PORT")
 	e := routes.Init()
-	e.Start(":8000")
+	e.Start(":" + port)
 }
