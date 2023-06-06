@@ -13,7 +13,17 @@ import (
 var DB *gorm.DB
 
 func LoadEnv() {
-	err := godotenv.Load()
+	env := os.Getenv("WEB_ENV")
+	if env == "" {
+		env = "development"
+	}
+
+	fileenv := ".env"
+	if env == "production" {
+		fileenv = "ENV"
+	}
+
+	err := godotenv.Load(fileenv)
 	if err != nil {
 		panic("gagal load file")
 	}
