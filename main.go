@@ -12,7 +12,7 @@ func init() {
 }
 
 func main() {
-	port := os.Getenv("WEB_PORT")
+	port := os.Getenv("PORT")
 	e := routes.Init()
 	e.Start(":" + port)
 }
