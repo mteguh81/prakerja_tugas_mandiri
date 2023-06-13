@@ -33,3 +33,10 @@ func GetEventController(c echo.Context) error {
 		Data:    events,
 	})
 }
+
+func DeleteEventController(c echo.Context) error {
+	var events []models.Event
+	id := c.Param("id")
+	configs.DB.Delete(&events, id)
+	return c.NoContent(http.StatusNoContent)
+}
